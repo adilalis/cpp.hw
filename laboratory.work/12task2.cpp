@@ -1,17 +1,15 @@
-int main() {
-    fill2D();
+long long sumRowMajor() {
+    long long s = 0;
+    for (int i = 0; i < R; i++)
+        for (int j = 0; j < C; j++)
+            s += A[i][j];
+    return s;
+}
 
-    auto t1 = high_resolution_clock::now();
-    long long s1 = sumRowMajor();
-    auto t2 = high_resolution_clock::now();
-
-    auto t3 = high_resolution_clock::now();
-    long long s2 = sumColMajor();
-    auto t4 = high_resolution_clock::now();
-
-    cout << "Row sum: " << s1 << endl;
-    cout << "Col sum: " << s2 << endl;
-
-    cout << "Row time: " << duration_cast<microseconds>(t2 - t1).count() << endl;
-    cout << "Col time: " << duration_cast<microseconds>(t4 - t3).count() << endl;
+long long sumColMajor() {
+    long long s = 0;
+    for (int j = 0; j < C; j++)
+        for (int i = 0; i < R; i++)
+            s += A[i][j];
+    return s;
 }
